@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學生出勤管理</title>
+</head>
+
+<body class="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="./ForNewJR_Functional/NewJR_Functional.js"></script>
+  <script src="./ForNewJR_Functional/js/jquery.js"></script>
+  <script src="./ForNewJR_Functional/js/jquery-2.1.1.min.js"></script>
+  <script src="./ForNewJR_Functional/js/jquery.nicescroll.js"></script>
+  <script src="./ForNewJR_Functional/js/jquery.magnific-popup.js" type="text/javascript"></script>
+  <script src="./ForNewJR_Functional/js/bootstrap.js"> </script>
+  <script src="./ForNewJR_Functional/js/jquery-ui.js"></script>
+  <script src="./ForNewJR_Functional/js/datepicker-zh-TW.js"></script>
+  <script src="./ForNewJR_Functional/js/scripts.js"></script>
+  <div id="ascrail2000" class="nicescroll-rails"
+    style="width: 6px; z-index: 1000; background: rgb(255, 255, 255); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: block; opacity: 0;">
+    <div
+      style="position: relative; top: 0px; float: right; width: 6px; height: 892px; background-color: rgb(104, 174, 0); border: 0px; background-clip: padding-box; border-radius: 10px;">
+    </div>
+  </div>
+  <div id="ascrail2000-hr" class="nicescroll-rails"
+    style="height: 6px; z-index: 1000; background: rgb(255, 255, 255); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;">
+    <div
+      style="position: relative; top: 0px; height: 6px; width: 1920px; background-color: rgb(104, 174, 0); border: 0px; background-clip: padding-box; border-radius: 10px;">
+    </div>
+  </div>
+  <link href="./ForNewJR_Functional/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./ForNewJR_Functional/css/style.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./ForNewJR_Functional/css/font-awesome.css" rel="stylesheet">
+  <link href="./ForNewJR_Functional/css/add.css" rel="stylesheet">
+  <link href="./ForNewJR_Functional/css/hover.css" rel="stylesheet" media="all">
+  <link href="./ForNewJR_Functional/css/demo-page.css" rel="stylesheet" media="all">
+  <link href="./ForNewJR_Functional/css/JQueryUI/jquery-ui.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./ForNewJR_Functional/js/jquery-ui.js" rel="stylesheet" type="text/javascript" media="all">
+  <link href="./ForNewJR_Functional/css/style.css" rel="stylesheet" type="text/css">
+  <link href="./CSS/css/diolog.css?v=9" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+  <!-- 新增的TeacherParentListPage.css -->
+  <link href="./CSS/jr-color.css" rel="stylesheet" type="text/css">
+  <link href="./CSS/lay-out-plug-in.css" rel="stylesheet" type="text/css">
+  <link href="./CSS/student-attendance.css" rel="stylesheet" type="text/css">
+
+  <!-- 加入JQuery UI 2019-03-06-->
+  <link rel="shortcut icon" href="../MasterPage/ForNewJR_Functional/images/logo.png">
+
+  <style>
+    .header-right {
+      float: right;
+      width: 520px;
+    }
+  </style>
+
+
+  <style>
+    .popwd1 {
+      color: #333333;
+      font-size: 24px;
+      line-height: 40px;
+      margin-left: -40px;
+    }
+
+    .payment-sendbtns {
+      margin-top: 1em;
+      margin-right: 5em;
+      margin-bottom: 1em;
+      margin-left: 0;
+    }
+
+    .top_tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      top: 50px;
+      margin-left: -60px;
+    }
+
+    .top_tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+    .menu-selected {
+      background-color: #44aad4 !important;
+    }
+  </style>
+
+  <form method="post" action="./Student_LifeContact.aspx" id="aspnetForm">
+    <div class="aspNetHidden">
+    </div>
+
+    <div class="aspNetHidden">
+
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9A9FA8E1">
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+        value="/wEdAAMowvLE7FNTI3uBfbKkxnICvE+Rvh9+HPLnQKiQd1QlOI9r1y33T0RBTVmbyprtLXJsFo0NC8XkrgmzAkaU7a7oMGtwxw==">
+    </div>
+    <div class="page-container">
+      <div class="left-content">
+        <div class="mother-grid-inner">
+
+          <!--登入者個人資料 Start-->
+          <div class="header-main">
+            <div class="header-right">
+              <ul class="nofitications-dropdown">
+                <li class="dropdown head-dpdn">
+                  　<a href="TeacherParent_manage.aspx">　　</a>　<a class="top_tooltip" style="cursor:pointer;"
+                    href="OperateTeaching.aspx"><img src="../images/e-learning_1.png"><span
+                      class="tooltiptext">系統操作教學</span></a>　<a class="top_tooltip" style="cursor:pointer;"
+                    onclick="go12345()"><img src="../images/linkicon-4-1.png"><span
+                      class="tooltiptext">系統公告</span></a>　<a class="top_tooltip" style="cursor:pointer;"
+                    href="http://jrad.jretc.net/Login/Jretc2Kingway?schoolid=12&amp;usersno=100000020"><img
+                      src="../images/linkicon-1.png"><span class="tooltiptext">教案平台</span></a>　<a class="top_tooltip"
+                    style="cursor:pointer;" onclick="go1234('SXWiJo8E8gY5AvVTKZXDsQ==')"><img
+                      src="../images/linkicon-7.png"><span class="tooltiptext">存預存款</span></a>　<a class="top_tooltip"
+                    style="cursor:pointer;" href="http://www.jerri.online/OnlineEnroll?schoolid=12"><img
+                      src="../images/OnlineEnroll.png" style="width:35px;height:25px;"><span
+                      class="tooltiptext">線上報名</span></a>
+                </li>
+              </ul>
+              <div class="profile_details">
+                <ul>
+                  <li class="dropdown profile_details_drop">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      <div class="profile_img">
+                        <div class="user-name">
+                          <p>張二峰 老師</p>
+                        </div>
+                        <i class="fa fa-angle-down lnr"></i>
+                        <i class="fa fa-angle-up lnr"></i>
+                        <div class="clearfix"></div>
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu drp-mnu">
+
+                      <li>
+
+                        <a href="chg_pwd.aspx"><i class="fa fa-key"></i>變更密碼</a>
+                      </li>
+                      <li><a class="popup-with-zoom-anim" href="#small-dialog6"><i class="fa fa-sign-out"></i>登出系統</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="popup">
+              <div id="small-dialog6" class="mfp-hide">
+                <div class="pop_up">
+                  <ul class="payment-online-form-left">
+
+                    <h4>&nbsp;</h4>
+
+                    <div class="inbox-details-body">
+                      <h4 class="popwd1">是否確認登出</h4>
+                      <ul class="payment-sendbtns">
+                        <li><a href="" class="cancel" title="Close (Esc)">取消</a></li>
+                        <li><a href="../login_out.aspx" class="order">確定</a></li>
+                      </ul>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                      </thead>
+                    </table>
+                    <div class="clear"></div>
+
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!--登入者個人資料 End-->
+
+          <link href="../cbm-css/jr-color.css?v20230601" rel="stylesheet" type="text/css" media="all">
+          <link href="../cbm-css/lay-out-plug-in.css?v20230601" rel="stylesheet" type="text/css" media="all">
+          <link href="../cbm-css/contact-book-management.css?v20230601" rel="stylesheet" type="text/css" media="all">
+          <link href="../cbm-css/life-profile.css?v20230601" rel="stylesheet" type="text/css" media="all">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+          <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+          <style>
+            @media only screen and (max-width: 1440px) {
+
+              /* 背景霧化 */
+              .AHC-Background-Blur {
+                width: calc(100% - 190px);
+              }
+
+              /* 結果彈跳視窗 */
+              .AHC-Result-Window {
+                width: calc(100% - 190px);
+              }
+
+            }
+
+            @media only screen and (min-width: 1441px) {
+
+              /* 背景霧化 */
+              .AHC-Background-Blur {
+                width: calc(100% - 220px);
+              }
+
+              /* 結果彈跳視窗 */
+              .AHC-Result-Window {
+                width: calc(100% - 220px);
+              }
+            }
+
+            .ui-datepicker select.ui-datepicker-month,
+            .ui-datepicker select.ui-datepicker-year {
+              color: black !important;
+            }
+
+            /* 背景霧化 */
+            .AHC-Background-Blur {
+              display: none;
+              z-index: 500;
+              height: 100%;
+              position: fixed;
+              right: 0;
+              top: 0;
+              background-color: #ced4da;
+              opacity: 0.5;
+            }
+
+            .AHC-Background-Blur-On {
+              z-index: 502;
+              display: block;
+            }
+
+            /* 結果彈跳視窗 */
+            .AHC-Result-Window {
+              display: none;
+              z-index: 503;
+              height: 100%;
+              position: fixed;
+              right: 0;
+              top: 0;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Window div.AHC-Result-Open {
+              width: 500px;
+              display: -webkit-flex;
+              display: flex;
+            }
+
+            .AHC-Result-Window div.AHC-Result-Open>div:nth-child(1) {
+              width: 100%;
+              position: relative;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Window div.AHC-Result-Open>div:nth-child(1)>div:nth-child(1) {
+              width: 100%;
+              max-height: calc(100vh - 100px);
+              position: relative;
+              border: 1px solid #008000;
+              background-color: white;
+              -webkit-border-radius: 10px;
+              -moz-border-radius: 10px;
+              border-radius: 10px;
+              -webkit-box-shadow: 0px 0px 5px 1px #adb5bd;
+              -moz-box-shadow: 0px 0px 5px 1px #adb5bd;
+              box-shadow: 0px 0px 5px 1px #adb5bd;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-flex-direction: column;
+              flex-direction: column;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Window div.AHC-Result-Open>div:nth-child(1)>div:nth-child(1).Error-Result {
+              border: 1px solid #C1121F;
+            }
+
+            .AHC-Result-Window-On {
+              display: -webkit-flex;
+              display: flex;
+            }
+
+            .AHC-Result-Window-On div.AHC-Result-Open>div:nth-child(1)>div:nth-child(1) {
+              opacity: 0;
+              -webkit-animation-name: AHC-Result-Window-On-Animation;
+              -moz-animation-name: AHC-Result-Window-On-Animation;
+              -o-animation-name: AHC-Result-Window-On-Animation;
+              animation-name: AHC-Result-Window-On-Animation;
+              -webkit-animation-delay: .8s;
+              -moz-animation-delay: .8s;
+              -o-animation-delay: .8s;
+              animation-delay: .8s;
+              -webkit-animation-duration: .5s;
+              -moz-animation-duration: .5s;
+              -o-animation-duration: .5s;
+              animation-duration: .5s;
+              -webkit-animation-fill-mode: forwards;
+              -moz-animation-fill-mode: forwards;
+              -o-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
+            }
+
+            @-webkit-keyframes AHC-Result-Window-On-Animation {
+              to {
+                opacity: 1;
+              }
+            }
+
+            @-moz-keyframes AHC-Result-Window-On-Animation {
+              to {
+                opacity: 1;
+              }
+            }
+
+            @-o-keyframes AHC-Result-Window-On-Animation {
+              to {
+                opacity: 1;
+              }
+            }
+
+            @keyframes AHC-Result-Window-On-Animation {
+              to {
+                opacity: 1;
+              }
+            }
+
+            .AHC-Result-Window-On div.AHC-Result-Open>div:nth-child(1)>div:nth-child(2) {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              left: 0;
+              top: 0;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              -webkit-animation-name: AHC-Result-Cover-Window-Animation;
+              -moz-animation-name: AHC-Result-Cover-Window-Animation;
+              -o-animation-name: AHC-Result-Cover-Window-Animation;
+              animation-name: AHC-Result-Cover-Window-Animation;
+              -webkit-animation-delay: .8s;
+              -moz-animation-delay: .8s;
+              -o-animation-delay: .8s;
+              animation-delay: .8s;
+              -webkit-animation-fill-mode: forwards;
+              -moz-animation-fill-mode: forwards;
+              -o-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
+            }
+
+            @-webkit-keyframes AHC-Result-Cover-Window-Animation {
+              to {
+                z-index: -1;
+              }
+            }
+
+            @-moz-keyframes AHC-Result-Cover-Window-Animation {
+              to {
+                z-index: -1;
+              }
+            }
+
+            @-o-keyframes AHC-Result-Cover-Window-Animation {
+              to {
+                z-index: -1;
+              }
+            }
+
+            @keyframes AHC-Result-Cover-Window-Animation {
+              to {
+                z-index: -1;
+              }
+            }
+
+            .AHC-Result-Window-On div.AHC-Result-Open>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
+              width: 100%;
+              position: absolute;
+              left: 0;
+              background-color: white;
+              -webkit-border-radius: 10px;
+              -moz-border-radius: 10px;
+              border-radius: 10px;
+              -webkit-animation-name: AHC-Result-Cover-On-Window-Animation;
+              -moz-animation-name: AHC-Result-Cover-On-Window-Animation;
+              -o-animation-name: AHC-Result-Cover-On-Window-Animation;
+              animation-name: AHC-Result-Cover-On-Window-Animation;
+              -webkit-animation-duration: .8s;
+              -moz-animation-duration: .8s;
+              -o-animation-duration: .8s;
+              animation-duration: .8s;
+              -webkit-animation-fill-mode: forwards;
+              -moz-animation-fill-mode: forwards;
+              -o-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
+            }
+
+            @-webkit-keyframes AHC-Result-Cover-On-Window-Animation {
+              0% {
+                height: 0;
+              }
+
+              50% {
+                height: calc(100% + 40px);
+              }
+
+              100% {
+                height: 100%;
+              }
+            }
+
+            @-moz-keyframes AHC-Result-Cover-On-Window-Animation {
+              0% {
+                height: 0;
+              }
+
+              50% {
+                height: calc(100% + 40px);
+              }
+
+              100% {
+                height: 100%;
+              }
+            }
+
+            @-o-keyframes AHC-Result-Cover-On-Window-Animation {
+              0% {
+                height: 0;
+              }
+
+              50% {
+                height: calc(100% + 40px);
+              }
+
+              100% {
+                height: 100%;
+              }
+            }
+
+            @keyframes AHC-Result-Cover-On-Window-Animation {
+              0% {
+                height: 0;
+              }
+
+              50% {
+                height: calc(100% + 40px);
+              }
+
+              100% {
+                height: 100%;
+              }
+            }
+
+            /* 結果彈跳視窗圖示 */
+            .AHC-Result-Img {
+              width: 100%;
+              height: 100px;
+              position: absolute;
+              left: 0;
+              top: -50px;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Img>div:nth-child(1) {
+              width: 100px;
+              height: 100px;
+              background-color: #EBFFEB;
+              border: 2px solid #008000;
+              -webkit-border-radius: 50%;
+              -moz-border-radius: 50%;
+              border-radius: 50%;
+              -webkit-box-shadow: 0px 0px 5px 1px #adb5bd;
+              -moz-box-shadow: 0px 0px 5px 1px #adb5bd;
+              box-shadow: 0px 0px 5px 1px #adb5bd;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Error-Img>div:nth-child(1) {
+              background-color: #FDECED;
+              border: 2px solid #C1121F;
+            }
+
+            .AHC-Result-Img>div:nth-child(1) img {
+              width: 50px;
+              height: 50px;
+              background-repeat: no-repeat;
+            }
+
+            /* 結果彈跳視窗標題 */
+            .AHC-Result-Title {
+              padding-top: 90px;
+              display: -webkit-flex;
+              display: flex;
+            }
+
+            .AHC-Result-Title span {
+              color: #495057;
+              font-size: 30pt;
+            }
+
+            /* 結果彈跳視窗內容 */
+            .AHC-Result-Content {
+              padding-top: 10px;
+              display: -webkit-flex;
+              display: flex;
+            }
+
+            .AHC-Result-Content span {
+              color: #008000;
+              font-size: 18pt;
+            }
+
+            .AHC-Result-Error-Content span {
+              color: #C1121F;
+            }
+
+            /* 結果彈跳視窗按鈕 */
+            .AHC-Result-Button {
+              width: 90%;
+              background-color: #008000;
+              margin-top: 70px;
+              margin-bottom: 20px;
+              padding: 10px 0 10px 0;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
+              -webkit-box-shadow: 0px 0px 5px 1px #adb5bd;
+              -moz-box-shadow: 0px 0px 5px 1px #adb5bd;
+              box-shadow: 0px 0px 5px 1px #adb5bd;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+            }
+
+            .AHC-Result-Error-Button {
+              background-color: #C1121F;
+            }
+
+            .AHC-Result-Button:hover {
+              cursor: pointer;
+              -webkit-animation-name: AHC-Result-Button-Animation;
+              -moz-animation-name: AHC-Result-Button-Animation;
+              -o-animation-name: AHC-Result-Button-Animation;
+              animation-name: AHC-Result-Button-Animation;
+              -webkit-animation-duration: .3s;
+              -moz-animation-duration: .3s;
+              -o-animation-duration: .3s;
+              animation-duration: .3s;
+              -webkit-animation-fill-mode: forwards;
+              -moz-animation-fill-mode: forwards;
+              -o-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
+            }
+
+            @-webkit-keyframes AHC-Result-Button-Animation {
+              to {
+                opacity: 0.8;
+              }
+            }
+
+            @-moz-keyframes AHC-Result-Button-Animation {
+              to {
+                opacity: 0.8;
+              }
+            }
+
+            @-o-keyframes AHC-Result-Button-Animation {
+              to {
+                opacity: 0.8;
+              }
+            }
+
+            @keyframes AHC-Result-Button-Animation {
+              to {
+                opacity: 0.8;
+              }
+            }
+
+            .AHC-Result-Button span {
+              color: #f8f9fa;
+              font-size: 14pt;
+            }
+          </style>
+          <script>
+            function show_information(SNo) {
+              document.getElementById("show_click").click();
+              $('.modal-content').load();
+            }
+            function edit_new_record(SNo) {
+              document.getElementById("edit_new_click").click();
+              $('.modal-content').load();
+            }
+            function edit_record(SNo) {
+              document.getElementById("edit_click").click();
+              $('.modal-content').load();
+            }
+          </script>
+          <div>
+            <h1 class="page-header">
+              學生出勤管理
+            </h1>
+          </div>
+          <input id="hfd_EmpSNo" type="hidden" value="100000020">
+          <!-- 切版開始 -->
+          <div class="chit-chat-layer1">
+            <div class="col-md-12 chit-chat-layer1-left">
+              <div class="work-progres">
+                <!--背景霧化-->
+                <div id="AHC_Background_Blur" class="AHC-Background-Blur"></div>
+                <!--結果彈跳視窗-->
+                <div id="AHC_Result_Window" class="AHC-Result-Window"></div>
+                <div class="panel-heading px-0">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="mb-05">
+                        <label for="school_select">選擇分校：</label>
+                        <select name="school_select" id="school_select" style="width:20%; margin-right: 24px;">
+                          <option value="1">台北分校</option>
+                          <option value="2">台中分校</option>
+                          <option value="3">高雄分校</option>
+                          <option value="4">台東分校</option>
+                          <option value="5">名字很長很長很長很長很長很長分校</option>
+                        </select>
+                        <label for="class_select_1">選擇班級：</label>
+                        <select name="class_select_1" id="class_select_1" style="width:12%;">
+                          <option value="6">國小</option>
+                          <option value="7">國中</option>
+                          <option value="8">高中</option>
+                          <option value="9">幼兒園</option>
+                          <option value="10">安親班</option>
+                        </select>
+                        <select name="class_select_2" id="class_select_2" style="width:12%;">
+                          <option value="11">國文</option>
+                          <option value="12">英文</option>
+                          <option value="13">數學</option>
+                          <option value="14">生物</option>
+                          <option value="15">其他</option>
+                        </select>
+                        <select name="class_select_3" id="class_select_3" style="width:12%;">
+                          <option value="16">一年級</option>
+                          <option value="17">二年級</option>
+                          <option value="18">三年級</option>
+                          <option value="19">四年級</option>
+                          <option value="20">五年級</option>
+                        </select>
+                      </div>
+                      <div class="">
+                        <label for="start_date_select">查詢日期：</label>
+                        <input id="start_date_select" type="date" style="width:20%; height:25px; margin-right: 24px;">
+                        <label for="student_name_input">學生姓名：</label>
+                        <input id="student_name_input" type="text" style="width:12%; height:25px;margin-right: 12.5%;">
+                        <button class="attendance-search-btn" onclick="javascript:__doPostBack('__Page','BTN|1')">
+                          搜尋 <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="border-danger-1 rounded-4 p-05 mb-1">
+                        <p class="jr-danger">打卡記錄每 ?? 秒刷新一次紀錄，可點擊刷新按鈕進行手動刷新。</p>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <P class="jr-system">刷新時間：11:31:16</P>
+                        <a class="jr-btn-prim-blue" onclick="loaddata()">刷新打卡紀錄 <i class="fas fa-sync-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="mb-2">
+                <div class="panel-body" id="cla_data">
+                  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                  <title>
+                  </title>
+                  <div class="aspNetHidden">
+                    <div class="aspNetHidden">
+                      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E456265D">
+                    </div>
+                    <div class="panel-body" id="cla_data">
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <table class="table table-striped table-bordered table-hover " id="cla_title"
+                            style="border-collapse: collapse; width: 100%; margin-bottom: 0px;">
+                            <thead>
+                              <tr>
+                                <th colspan="9" class="bg-title">學生出勤紀錄</th>
+                              </tr>
+                              <tr class="bg-title">
+                                <th style="width:5%">序號</th>
+                                <th style="width:15%">學生編號</th>
+                                <th style="width:10%">學生姓名</th>
+                                <th style="width:22%">班級名稱</th>
+                                <th style="width:8%">出勤狀況</th>
+                                <th style="width:8%">到班時間</th>
+                                <th style="width:8%">離班時間</th>
+                                <th style="width:18%">備註</th>
+                                <th style="width:9%">操作</th>
+                              </tr>
+                            </thead>
+                            <tbody id="">
+                              <tr>
+                                <td>01</td>
+                                <td>UD21035405103</td>
+                                <td>曾天材sky(Sky)</td>
+                                <td>國小-安親班-一年級</td>
+                                <td> <span class="jr-success">已到班</span> </td>
+                                <td>18:06</td>
+                                <td></td>
+                                <td class="attendance-remark">
+                                  備註備註備註備註備註備註備註備註備註備註備註備註備註備註
+                                </td>
+                                <td>
+                                  <!-- <a class="button-add3-3" onclick="show_information(82)">詳細</a> -->
+                                  <a href="#" onclick="show_information()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>02</td>
+                                <td>UD21035405103</td>
+                                <td>李羽璋(ace)</td>
+                                <td>國小-名字很長很長班-一年級</td>
+                                <td> <span class="jr-danger">未到班</span> </td>
+                                <td></td>
+                                <td></td>
+                                <td class="attendance-remark">
+                                  備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註
+                                </td>
+                                <td>
+                                  <a href="#" onclick="show_information()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>03</td>
+                                <td>UD21035405103</td>
+                                <td>李羽璋(ace)</td>
+                                <td>國小-安親班-一年級</td>
+                                <td> <span class="jr-system">已離班</span> </td>
+                                <td>17:36</td>
+                                <td>20:13</td>
+                                <td class="attendance-remark">
+                                  備註備註備註備註備註備註備註備註備註備註備註備註
+                                </td>
+                                <td>
+                                  <a href="#" onclick="show_information()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>04</td>
+                                <td>UD21035405103</td>
+                                <td>李羽璋(ace)</td>
+                                <td>國小-安親班-一年級</td>
+                                <td> <span class="jr-feature">病假</span> </td>
+                                <td></td>
+                                <td></td>
+                                <td class="attendance-remark">備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註備註</td>
+                                <td>
+                                  <a href="#" onclick="show_information()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-sm-4">
+                          <table class="table table-striped table-bordered table-hover " id="cla_title"
+                            style="border-collapse: collapse; width: 100%; margin-bottom: 0px;">
+                            <thead>
+                              <tr>
+                                <th colspan="3" class="jr-bg-system text-white">
+                                  打卡紀錄
+                                </th>
+                                <th colspan="1" class="jr-bg-system text-white py-1">
+                                  <a class="text-white jr-btn-outline-white" href="#" onclick="edit_new_record()">
+                                    <i class="fas fa-plus"></i>新增
+                                  </a>
+                                </th>
+                              </tr>
+                              <tr class="jr-bg-system text-white">
+                                <th style="width:20%">打卡序號</th>
+                                <th style="width:30%">姓名</th>
+                                <th style="width:30%">打卡時間</th>
+                                <th style="width:20%">操作</th>
+                              </tr>
+                            </thead>
+                            <tbody id="cla_data2">
+                              <tr>
+                                <td>1</td>
+                                <td>李羽璋(ace)</td>
+                                <td>18:06</td>
+                                <td>
+                                  <a href="#" onclick="edit_record()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>陳嘉俊</td>
+                                <td>18:07</td>
+                                <td>
+                                  <a href="#" onclick="edit_record()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>曾天材sky(Sky)</td>
+                                <td>18:08</td>
+                                <td>
+                                  <a href="#" onclick="edit_record()">
+                                    <i class="fas fa-edit jr-admin-blue"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 打卡記錄操作 -->
+                  <a data-toggle="modal" data-target="#information_item" style="display: none" id="show_click"></a>
+                  <div class="modal fade" id="information_item" tabindex="-1" role="dialog"
+                    aria-labelledby="information_item" aria-hidden="true" style="display: none;">
+                    <div id="md_div" class="modal-dialog" style="width: 800px;">
+                      <div class="modal-content">
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>
+                        </title>
+                        <div class="aspNetHidden">
+                        </div>
+                        <div class="aspNetHidden">
+                          <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="60D3D197">
+                        </div>
+                        <div class="section-shadow">
+                          <div class="modal-header jr-bg-main-blue">打卡記錄操作</div>
+                          <div class="modal-body">
+                            <div class="d-flex justify-content-center mb-05">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  學生資訊：
+                                </p>
+                                <div class="border-1 py-1">
+                                  <div class="d-flex justify-content-between px-1 mb-1">
+                                    <p class="col-sm-7 text-align-left">學生編號： <span>U99G3336</span> </p>
+                                    <p class="col-sm-5 text-align-left">學生姓名： <span>曾天材sky(Sky)	</span> </p>
+                                  </div>
+                                  <div class="d-flex justify-content-between px-1">
+                                    <p class="col-sm-7 text-align-left">班級名稱： <span>國小-名字很長很長班-一年級	</span> </p>
+                                    <p class="col-sm-5 text-align-left">出勤狀況： <span class="jr-success">已到班</span> </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-2">
+                              <a class="jr-btn-red me-1" onclick="" id="day-off-btn"><i class="fas fa-exclamation-triangle"></i> 學生請假</a>
+                              <a class="jr-btn-prim-blue" onclick=""><i class="fas fa-sync-alt"></i> 還原至未點名</a>
+                            </div>
+                            <!-- 調整打卡記錄區塊 -->
+                            <div class="d-flex justify-content-center mb-2" id="change-attendance-area">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  打卡紀錄調整：
+                                </p>
+                                <hr style="margin-top:0px;">
+                                <div class="d-flex px-3">
+                                  <div class="col-sm-6">
+                                    <label class="mb-0" for="attendance_time_change">到班時間：</label>
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">01</option>
+                                      <option value="">02</option>
+                                      <option value="">03</option>
+                                      <option value="">04</option>
+                                      <option value="">05</option>
+                                      <option value="">06</option>
+                                      <option value="">07</option>
+                                      <option value="">08</option>
+                                      <option value="">09</option>
+                                      <option value="">10</option>
+                                      <option value="">11</option>
+                                      <option value="">12</option>
+                                      <option value="">13</option>
+                                      <option value="">14</option>
+                                      <option value="">15</option>
+                                      <option value="">16</option>
+                                      <option value="">17</option>
+                                      <option value="">18</option>
+                                      <option value="">19</option>
+                                      <option value="">20</option>
+                                      <option value="">21</option>
+                                      <option value="">22</option>
+                                      <option value="">23</option>
+                                    </select>
+                                    時
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">05</option>
+                                      <option value="">10</option>
+                                      <option value="">15</option>
+                                      <option value="">20</option>
+                                      <option value="">25</option>
+                                      <option value="">30</option>
+                                      <option value="">35</option>
+                                      <option value="">40</option>
+                                      <option value="">45</option>
+                                      <option value="">50</option>
+                                      <option value="">55</option>
+                                    </select>
+                                    分
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <input type="checkbox">
+                                    <label class="mb-0" for="attendance_time_check_1">使用打卡時間：</label>
+                                    <select name="" id="" style="width: 40%;">
+                                      <option value="">18:06</option>
+                                      <option value="">18:09</option>
+                                      <option value="">18:12</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex px-3">
+                                  <div class="col-sm-6">
+                                    <label class="mb-0" for="attendance_time_change">離班時間：</label>
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">01</option>
+                                      <option value="">02</option>
+                                      <option value="">03</option>
+                                      <option value="">04</option>
+                                      <option value="">05</option>
+                                      <option value="">06</option>
+                                      <option value="">07</option>
+                                      <option value="">08</option>
+                                      <option value="">09</option>
+                                      <option value="">10</option>
+                                      <option value="">11</option>
+                                      <option value="">12</option>
+                                      <option value="">13</option>
+                                      <option value="">14</option>
+                                      <option value="">15</option>
+                                      <option value="">16</option>
+                                      <option value="">17</option>
+                                      <option value="">18</option>
+                                      <option value="">19</option>
+                                      <option value="">20</option>
+                                      <option value="">21</option>
+                                      <option value="">22</option>
+                                      <option value="">23</option>
+                                    </select>
+                                    時
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">05</option>
+                                      <option value="">10</option>
+                                      <option value="">15</option>
+                                      <option value="">20</option>
+                                      <option value="">25</option>
+                                      <option value="">30</option>
+                                      <option value="">35</option>
+                                      <option value="">40</option>
+                                      <option value="">45</option>
+                                      <option value="">50</option>
+                                      <option value="">55</option>
+                                    </select>
+                                    分
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <input type="checkbox">
+                                    <label class="mb-0" for="attendance_time_check_1">使用打卡時間：</label>
+                                    <select name="" id="" style="width: 40%;">
+                                      <option value="">20:03</option>
+                                      <option value="">22:06</option>
+                                      <option value="">23:32</option>
+                                      <option value="">23:41</option>
+                                      <option value="">23:58</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <hr style="margin-bottom:0px;">
+                              </div>
+                            </div>
+                            <!-- 請假選擇區塊 -->
+                            <div class="d-flex justify-content-center mb-2" id="day_off_area">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  學生請假選項：
+                                </p>
+                                <hr style="margin-top:0px;">
+                                <div class="d-flex px-3">
+                                  <div class="col-sm-6">
+                                    <label class="mb-0" for="attendance_time_change">學生請假：</label>
+                                    <select name="" id="" style="width:60%">
+                                      <option value="">請假類別</option>
+                                      <option value="">病假</option>
+                                      <option value="">事假</option>
+                                      <option value="">生理假</option>
+                                      <option value="">產假</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <hr>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-1">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">備註：</p>
+                                <textarea class="attendance-remark-input" name="" id="attendance_remark_input" cols="30" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <a class="jr-btn-red me-1" onclick=""><i class="fas fa-times"></i> 取消請假</a>
+                              <a class="jr-btn-prim-green" onclick=""><i class="fas fa-save"></i> 儲存打卡紀錄</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新增打卡紀錄 -->
+                  <a data-toggle="modal" data-target="#edit_new_item" style="display: none" id="edit_new_click"></a>
+                  <div class="modal fade" id="edit_new_item" tabindex="-1" role="dialog"
+                    aria-labelledby="edit_new_item" aria-hidden="true" style="display: none;">
+                    <div id="md_div" class="modal-dialog" style="width: 800px;">
+                      <div class="modal-content">
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>
+                        </title>
+                        <div class="section-shadow">
+                          <div class="modal-header jr-bg-main-blue">新增打卡紀錄</div>
+                          <div class="modal-body">
+                            <div class="d-flex justify-content-center mb-05">
+                              <div class="col-sm-10 mb-1">
+                                <p class="text-align-left fw-bold">
+                                  學生資訊：
+                                </p>
+                                <div class="border-1 py-1">
+                                  <div class="d-flex justify-content-between px-1">
+                                    <div class="col-sm-6">
+                                      <label for="">學生姓名：</label>
+                                      <select name="" id="" style="width: 50%;">
+                                        <option value="">曾天才</option>
+                                        <option value="">李羽璋(ace)</option>
+                                        <option value="">陳嘉俊</option>
+                                        <option value="">曾天材sky(Sky)</option>
+                                        <option value="">李羽璋(ace)</option>
+                                        <option value="">蘇筱晴</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <label for="">學生編號：</label>
+                                      <input type="text" style="width:50%;" placeholder="">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 編輯打卡記錄區塊 -->
+                            <div class="d-flex justify-content-center mb-2" id="change-attendance-area">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  打卡紀錄調整：
+                                </p>
+                                <hr style="margin-top:0px;">
+                                <div class="d-flex justify-content-center px-3">
+                                  <div class="col-sm-6">
+                                    <label class="mb-0" for="attendance_time_change">打卡時間：</label>
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">01</option>
+                                      <option value="">02</option>
+                                      <option value="">03</option>
+                                      <option value="">04</option>
+                                      <option value="">05</option>
+                                      <option value="">06</option>
+                                      <option value="">07</option>
+                                      <option value="">08</option>
+                                      <option value="">09</option>
+                                      <option value="">10</option>
+                                      <option value="">11</option>
+                                      <option value="">12</option>
+                                      <option value="">13</option>
+                                      <option value="">14</option>
+                                      <option value="">15</option>
+                                      <option value="">16</option>
+                                      <option value="">17</option>
+                                      <option value="">18</option>
+                                      <option value="">19</option>
+                                      <option value="">20</option>
+                                      <option value="">21</option>
+                                      <option value="">22</option>
+                                      <option value="">23</option>
+                                    </select>
+                                    時
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">05</option>
+                                      <option value="">10</option>
+                                      <option value="">15</option>
+                                      <option value="">20</option>
+                                      <option value="">25</option>
+                                      <option value="">30</option>
+                                      <option value="">35</option>
+                                      <option value="">40</option>
+                                      <option value="">45</option>
+                                      <option value="">50</option>
+                                      <option value="">55</option>
+                                    </select>
+                                    分
+                                  </div>
+                                </div>
+                                <hr style="margin-bottom:0px;">
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-1">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">備註：</p>
+                                <textarea class="attendance-remark-input" name="" id="attendance_remark_input" cols="30" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-between px-5">
+                              <a class="jr-btn-red me-1" onclick=""><i class="fas fa-times"></i> 刪除打卡紀錄</a>
+                              <a class="jr-btn-prim-green" onclick=""><i class="fas fa-save"></i> 儲存打卡紀錄</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 編輯打卡紀錄 -->
+                  <a data-toggle="modal" data-target="#edit_item" style="display: none" id="edit_click"></a>
+                  <div class="modal fade" id="edit_item" tabindex="-1" role="dialog"
+                    aria-labelledby="edit_item" aria-hidden="true" style="display: none;">
+                    <div id="md_div" class="modal-dialog" style="width: 800px;">
+                      <div class="modal-content">
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <title>
+                        </title>
+                        <div class="aspNetHidden">
+                        </div>
+                        <div class="aspNetHidden">
+                          <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="60D3D197">
+                        </div>
+                        <div class="section-shadow">
+                          <div class="modal-header jr-bg-main-blue">編輯打卡紀錄</div>
+                          <div class="modal-body">
+                            <div class="d-flex justify-content-center mb-05">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  學生資訊：
+                                </p>
+                                <div class="border-1 py-1">
+                                  <div class="d-flex justify-content-between px-1">
+                                    <div class="col-sm-6">
+                                      <label for="">打卡序號：</label>
+                                      <input type="text" style="width:50%;" disabled placeholder="38618">
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <label for="">學生姓名：</label>
+                                      <select name="" id="" style="width: 50%;">
+                                        <option value="">曾天才</option>
+                                        <option value="">李羽璋(ace)</option>
+                                        <option value="">陳嘉俊</option>
+                                        <option value="">曾天材sky(Sky)</option>
+                                        <option value="">李羽璋(ace)</option>
+                                        <option value="">蘇筱晴</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 調整打卡記錄區塊 -->
+                            <div class="d-flex justify-content-center mb-2" id="change-attendance-area">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">
+                                  打卡紀錄調整：
+                                </p>
+                                <hr style="margin-top:0px;">
+                                <div class="d-flex justify-content-center px-3">
+                                  <div class="col-sm-6">
+                                    <label class="mb-0" for="attendance_time_change">打卡時間：</label>
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">01</option>
+                                      <option value="">02</option>
+                                      <option value="">03</option>
+                                      <option value="">04</option>
+                                      <option value="">05</option>
+                                      <option value="">06</option>
+                                      <option value="">07</option>
+                                      <option value="">08</option>
+                                      <option value="">09</option>
+                                      <option value="">10</option>
+                                      <option value="">11</option>
+                                      <option value="">12</option>
+                                      <option value="">13</option>
+                                      <option value="">14</option>
+                                      <option value="">15</option>
+                                      <option value="">16</option>
+                                      <option value="">17</option>
+                                      <option value="">18</option>
+                                      <option value="">19</option>
+                                      <option value="">20</option>
+                                      <option value="">21</option>
+                                      <option value="">22</option>
+                                      <option value="">23</option>
+                                    </select>
+                                    時
+                                    <select name="" id="" style="width: 20%;">
+                                      <option value="">00</option>
+                                      <option value="">05</option>
+                                      <option value="">10</option>
+                                      <option value="">15</option>
+                                      <option value="">20</option>
+                                      <option value="">25</option>
+                                      <option value="">30</option>
+                                      <option value="">35</option>
+                                      <option value="">40</option>
+                                      <option value="">45</option>
+                                      <option value="">50</option>
+                                      <option value="">55</option>
+                                    </select>
+                                    分
+                                  </div>
+                                </div>
+                                <hr style="margin-bottom:0px;">
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-1">
+                              <div class="col-sm-10">
+                                <p class="text-align-left fw-bold">備註：</p>
+                                <textarea class="attendance-remark-input" name="" id="attendance_remark_input" cols="30" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-between px-5">
+                              <a class="jr-btn-red me-1" onclick=""><i class="fas fa-times"></i> 刪除打卡紀錄</a>
+                              <a class="jr-btn-prim-green" onclick=""><i class="fas fa-save"></i> 儲存打卡紀錄</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 側邊選單-->
+        <div class="sidebar-menu" style="word-break: break-all;">
+          <div class="logo">
+            <a href="http://bison.jretc.net/index.html"><img height="45px;" width="auto;"
+                src="http://jrad.jretc.net/Upload/12/Image/93530859-3b73-4bb4-a7e0-a3db6f6f7534.png">校掌雲學院</a>
+            <input name="ctl00$ctl00$ContentPlaceHolder1$hfd_user" type="hidden"
+              id="ctl00_ctl00_ContentPlaceHolder1_hfd_user" value="100000020">
+            <input name="ctl00$ctl00$ContentPlaceHolder1$hfd_pushmessage" type="hidden"
+              id="ctl00_ctl00_ContentPlaceHolder1_hfd_pushmessage" value="1">
+          </div>
+          <div class="menu">
+            <ul id="menu">
+              <li id="Menu_1"><a href="TeacherParent3.aspx"><i class="fa fa-comments "></i><span>親師聯絡</span><span
+                    id="Menu_show1" class="spanwd2" style="display:none;">　</span></a></li>
+              <li id="Menu_3"><a href="ManStuAtt2.aspx"><i class="fa fa-check"></i><span>學生點名</span><span
+                    id="Menu_show3" class="spanwd2" style="display:none;">　</span></a></li>
+              <li id="Menu_4"><a href="#"><i class="fa fa-coffee"></i><span>訂餐</span><span id="Menu_show4"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_20"><a href="TeacherOrder2.aspx"><span>多選訂餐</span><span id="Menu_show20" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_21"><a href="Restaurant_setting2.aspx"><span>訂餐資料設定</span><span id="Menu_show21"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_22"><a href="TeacherOrder_Search.aspx"><span>訂餐資料查詢</span><span id="Menu_show22"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_74"><a href="TeacherTakeMeal.aspx"><span>領餐管理</span><span id="Menu_show74"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_5" class="menu-selected"><a href="#"><i class="fa fa-edit"></i><span>各項輸入</span><span
+                    id="Menu_show5" class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_14"><a href="HealthRecord.aspx"><span>健康紀錄</span><span id="Menu_show14" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_45"><a href="phone_Lifeprofile.aspx"><span>生活概況</span><span id="Menu_show45"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_15"><a href="TeacherSchedule2.aspx"><span>我的課程</span><span id="Menu_show15"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_76"><a href="Student_AmericanHomeContact.aspx"><span>美語聯絡簿管理</span><span id="Menu_show76"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_84"><a href="TeacherScore2.aspx"><span>成績資料</span><span id="Menu_show84" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_17"><a href="TeacherScore_new.aspx"><span>成績輸入(舊版)</span><span id="Menu_show17"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_16"><a href="ManTelephoneRec2.aspx"><span>電訪記錄區(舊版)</span><span id="Menu_show16"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_75"><a href="phone_TeacherContact.aspx"><span>家庭聯絡簿</span><span id="Menu_show75"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_87"><a href="phone_TeacherAContact.aspx"><span>美語聯絡簿</span><span id="Menu_show87"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_88"><a href="phone_TeacherMContact.aspx"><span>M數學聯絡簿</span><span id="Menu_show88"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_82"><a href="Student_HomeContact.aspx"><span>家庭聯絡簿管理</span><span id="Menu_show82"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_83"><a href="Student_MContact.aspx"><span>M數學聯絡簿管理</span><span id="Menu_show83"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_96"><a href="student_01Contact.aspx"><span>0-1歲聯絡簿管理</span><span id="Menu_show96"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_97"><a href="student_12Contact.aspx"><span>1-2歲聯絡簿管理</span><span id="Menu_show97"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_98" class="menu-selected"><a href="Student_LifeContact.aspx"><span>生活概況管理</span><span
+                        id="Menu_show98" class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_99"><a href="Student_BabyContact.aspx"><span>寶寶聯絡簿管理</span><span id="Menu_show99"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_7"><a href="#"><i class="fa fa-cogs"></i><span>學生管理</span><span id="Menu_show7"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_49"><a href="Student_manage.aspx"><span>學生資料</span><span id="Menu_show49" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_26"><a href="TeacherScoreSearch_new.aspx"><span>成績管理</span><span id="Menu_show26"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_27"><a href="ManTelephoneRecL_new.aspx"><span>電訪記錄管理(舊版)</span><span id="Menu_show27"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_91"><a href="AccessRecord_manage.aspx"><span>訪談紀錄管理</span><span id="Menu_show91"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_6"><a href="#"><i class="fa fa-calendar nav_icon"></i><span>行政作業</span><span id="Menu_show6"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_23"><a href="NoticeDeposit.aspx"><span>通知繳預存款</span><span id="Menu_show23"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_42"><a href="TeacherFeedmedicine.aspx"><span>餵藥委託</span><span id="Menu_show42"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_44"><a href="Delay_Care.aspx"><span>延托費用</span><span id="Menu_show44" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_43"><a href="HealthyReport.aspx"><span>健康回報</span><span id="Menu_show43" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_90"><a href="StudentPickup.aspx"><span>接送通知管理</span><span id="Menu_show90"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_92"><a href="creditUserAcct_manage.aspx"><span>預存款</span><span id="Menu_show92"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_70"><a href="FastPayment.aspx"><span>快速收費</span><span id="Menu_show70" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_71"><a href="DailyReport.aspx"><span>收費日報表</span><span id="Menu_show71" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_8"><a href="#"><i class="fa fa-briefcase "></i><span>行政管理</span><span id="Menu_show8"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_28"><a href="ManSchoolPost2.aspx"><span>公告管理</span><span id="Menu_show28" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_29"><a
+                      href="http://jrad.jretc.net/Login/GetLoginSchoolUser?login=47CEA2A05395A9C1CED467E52432E187A7421B4592FF26795DF2AC7E01F6B22B"
+                      target="_blank"><span>後台管理</span><span id="Menu_show29" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_30"><a href="TeacherRole.aspx"><span>個人權限</span><span id="Menu_show30" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_31"><a href="Questionnaire2.aspx"><span>問卷管理</span><span id="Menu_show31" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_32"><a href="TeacherJob_Management.aspx"><span>工作管理</span><span id="Menu_show32"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_89"><a href="ConvStorePay_Payment.aspx"><span>超商繳費條碼</span><span id="Menu_show89"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_48"><a href="ConvStorePay_search.aspx"><span>超商繳費單查詢</span><span id="Menu_show48"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_93"><a href="teacherPayment_search.aspx"><span>繳費查詢</span><span id="Menu_show93"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_94"><a href="refundOperation.aspx"><span>退費作業</span><span id="Menu_show94"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_77"><a href="TeacherPayment.aspx"><span>繳費作業</span><span id="Menu_show77" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_85"><a href="StudentPhotoVerify.aspx"><span>照片審核</span><span id="Menu_show85"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_81"><a href="SalesRev_Record.aspx"><span>各校銷帳</span><span id="Menu_show81"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_86"><a href="#"><i class="fa fa-chalkboard-teacher"></i><span>人事管理</span><span
+                    id="Menu_show86" class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_56"><a href="Teacher_manage.aspx"><span>人事資料</span><span id="Menu_show56" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_64"><a href="salary_setting.aspx"><span>薪資項目</span><span id="Menu_show64" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_65"><a href="salary_Payroll.aspx"><span>薪資發放</span><span id="Menu_show65" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_9"><a href="#"><i class="fa fa-database"></i><span>功能與參數</span><span id="Menu_show9"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_34"><a href="MenuSetting.aspx"><span>手機選單設定</span><span id="Menu_show34" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_35"><a href="MenuSettingweb.aspx"><span>網頁選單設定</span><span id="Menu_show35"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_66"><a href="SystemSetting.aspx"><span>參數設定</span><span id="Menu_show66" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_69"><a
+                      href="http://jrad.jretc.net/CourseManagement/SetupClassLevels?Login=47CEA2A05395A9C1CED467E52432E187A7421B4592FF26795DF2AC7E01F6B22B"
+                      target="_blank"><span>課程參數</span><span id="Menu_show69" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_10"><a href="#"><i class="fa fa-book"></i><span>課程管理</span><span id="Menu_show10"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_36"><a href="CourseManagement.aspx"><span>課程設定</span><span id="Menu_show36"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_52"><a href="PointsSettings.aspx"><span>點數專案設定</span><span id="Menu_show52"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_50"><a href="ClassSchedule_Teacher.aspx"><span>老師排課</span><span id="Menu_show50"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_72"><a href="Class_view_setting.aspx"><span>上課課表</span><span id="Menu_show72"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_33"><a href="class_view_adm.aspx"><span>課表總覽區</span><span id="Menu_show33"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_11"><a href="#"><i class="fa fa-user-plus"></i><span>報名作業</span><span id="Menu_show11"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_37"><a href="Student_apply.aspx"><span>報名</span><span id="Menu_show37" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_38"><a href="Student_applySearch.aspx"><span>報名查詢</span><span id="Menu_show38"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_47"><a href="Apply_Record.aspx"><span>報名計次查詢</span><span id="Menu_show47" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_53"><a href="Student_apply_point.aspx"><span>點數型報名</span><span id="Menu_show53"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_54"><a href="Teacher_ProjectSearch.aspx"><span>點數專案查詢</span><span id="Menu_show54"
+                        class="spanwd2" style="display:none;">　</span></a></li>
+                  <li id="Menu_95"><a href="Day_Course.aspx"><span>排課及報名</span><span id="Menu_show95" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+              <li id="Menu_46"><a href="#"><i class="fa fa-user-tie"></i><span>我的</span><span id="Menu_show46"
+                    class="spanwd3" style="display:none;">　</span><span class="fa fa-angle-right"
+                    style="float:right"></span></a>
+                <ul>
+                  <li id="Menu_2"><a href="TeacherJob.aspx"><span>我的工作</span><span id="Menu_show2" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                  <li id="Menu_12"><a href="Class_view.aspx"><span>我的課表</span><span id="Menu_show12" class="spanwd2"
+                        style="display:none;">　</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+      </div>
+
+
+
+      <script>DatetimeEvent();</script>
+  </form>
+  <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+
+
+<script src="./student-attendance.js"></script>
+</body>
+
+</html>
